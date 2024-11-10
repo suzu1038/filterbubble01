@@ -4,90 +4,91 @@
   <meta charset="UTF-8">
   <title>あなたのYouTubeの閲覧履歴からフィルターバブルを実感しよう</title>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start; /* 上部にコンテンツを寄せる */
-      height: 100vh;
-      background-color: #252935; /* 背景色を #252935 に設定 */
-      color: #fff; /* 文字色を白に設定 */
-      overflow: hidden;
-      position: relative;
-      padding-top: 50px; /* 上部に余白を追加 */
-    }
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* 上部にコンテンツを寄せる */
+    height: auto; /* 高さを自動調整 */
+    background-color: #252935; /* 背景色を #252935 に設定 */
+    color: #fff; /* 文字色を白に設定 */
+    overflow: auto; /* スクロールを有効にする */
+    position: relative;
+    padding-top: 50px; /* 上部に余白を追加 */
+  }
 
-    /* メインタイトルのスタイル */
-    #main-title {
-      font-size: 32px; /* 文字を大きく */
-      font-weight: bold;
-      color: #fff;
-      background-color: #6ABBC6; /* 背景色を #6ABBC6 に設定 */
-      padding: 20px; /* 余白を大きく */
-      border-radius: 10px; /* 角を丸く */
-      width: 80%; /* タイトルの幅を調整 */
-      text-align: center; /* 中央揃え */
-      margin-bottom: 40px; /* タイトルとボタンの間に余白を追加 */
-      line-height: 1.2; /* 行間を調整して2行に見やすくする */
-    }
+  /* メインタイトルのスタイル */
+  #main-title {
+    font-size: 32px; /* 文字を大きく */
+    font-weight: bold;
+    color: #fff;
+    background-color: #6ABBC6; /* 背景色を #6ABBC6 に設定 */
+    padding: 20px; /* 余白を大きく */
+    border-radius: 10px; /* 角を丸く */
+    width: 80%; /* タイトルの幅を調整 */
+    text-align: center; /* 中央揃え */
+    margin-bottom: 40px; /* タイトルとボタンの間に余白を追加 */
+    line-height: 1.2; /* 行間を調整して2行に見やすくする */
+  }
 
-    /* ボタンのスタイル */
-    h1 {
-      font-size: 20px;
-      color: #fff;
-      margin-bottom: 30px; /* タイトルとボタンの間に大きな余白 */
-    }
+  /* ボタンのスタイル */
+  h1 {
+    font-size: 20px;
+    color: #fff;
+    margin-bottom: 30px; /* タイトルとボタンの間に大きな余白 */
+  }
 
-    #load-file {
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      background-color: #6e7dff;
-      border: none;
-      color: white;
-      border-radius: 5px;
-      margin-bottom: 30px; /* ボタンと画像の間に余白を追加 */
-    }
+  #load-file {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background-color: #6e7dff;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 30px; /* ボタンと画像の間に余白を追加 */
+  }
 
-    #load-file:hover {
-      background-color: #4d5bc5;
-    }
+  #load-file:hover {
+    background-color: #4d5bc5;
+  }
 
-    #container {
-      width: 90%;
-      max-width: 800px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-    }
+  #container {
+    width: 90%;
+    max-width: 800px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
 
-    /* 画像のスタイル */
-    #bubble-image {
-      width: 520px; /* 画像の幅をさらに大きく */
-      height: auto;
-      margin-bottom: 40px; /* 円グラフとの間に十分なスペースを追加 */
-      display: none;
-    }
+  /* 画像のスタイル */
+  #bubble-image {
+    width: 520px; /* 画像の幅をさらに大きく */
+    height: auto;
+    margin-bottom: 40px; /* 円グラフとの間に十分なスペースを追加 */
+    display: none;
+  }
 
-    /* 円グラフのスタイル */
-    #pie-chart {
-      width: 400px;
-      height: 400px;
-      border: 2px solid #ddd;
-      border-radius: 10px;
-      background-color: #f9f9f9;
-      padding: 20px;
-      position: relative;
-      z-index: 1; /* 画像の下に配置 */
-    }
-  </style>
+  /* 円グラフのスタイル */
+  #pie-chart {
+    width: 400px;
+    height: 400px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    position: relative;
+    z-index: 1; /* 画像の下に配置 */
+  }
+</style>
+
 </head>
 <body>
   <!-- サイトのタイトルとボタン -->
